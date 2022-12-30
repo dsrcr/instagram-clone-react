@@ -143,23 +143,42 @@ const App = () => {
                         <Button onClick={() => auth.signOut()}>Logout</Button>
                     ) : (
                         <div className="app__loginContainer">
-                            <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
-                            <Button onClick={() => setOpen(true)}>Sign Up</Button>
+                            <Button onClick={() => setOpenSignIn(true)}>SIGN IN</Button>
+                            <Button onClick={() => setOpen(true)}>SIGN UP</Button>
                         </div>
 
                     )
                 }
 
             </div>
-
-            {posts.map(({ id, post }) => (
-                <Post
-                    key={id}
-                    username={post.username}
-                    caption={post.caption}
-                    imageUrl={post.imageUrl}
-                />
-            ))}
+            <div className="app__posts">
+                <div className="app__postsLeft">
+                    {posts.map(({ id, post }) => (
+                        <Post
+                            key={id}
+                            postId={id}
+                            user={user}
+                            username={post.username}
+                            caption={post.caption}
+                            imageUrl={post.imageUrl}
+                        />
+                    ))}
+                </div>
+                <div className="app__postsRight">
+                    {/* This probably won't work in React18 */}
+                    {/* <InstagramEmbed
+                        maxWidth={320}
+                        hideCaption={false}
+                        containerTagName='div'
+                        protocol=''
+                        injectScript
+                        onLoading={ () => {} }
+                        onSuccess={() => {}}
+                        onFailure={() => {}}
+                        onAfterRender={() => {}}
+                        /> */}
+                </div>
+            </div>
 
             {/* {
                 user?.displayName ? ( */}
